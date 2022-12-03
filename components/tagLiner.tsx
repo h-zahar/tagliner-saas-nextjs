@@ -31,16 +31,16 @@ const TagLiner: React.FC = () => {
                 <p>Enter Keywords for your brand</p>
             </div>
             <div ref={inputRef}>
-            <input 
-                placeholder="tea" 
-                value={keyword}
-                onChange={(e) => setKeyword(e.currentTarget.value)} 
-                onKeyUp={(e) => {
-                    if (e.key === 'Enter') onsubmit();
-                }}
-            />
+                <input 
+                    placeholder="tea" 
+                    value={keyword}
+                    onChange={(e) => setKeyword(e.currentTarget.value)} 
+                    onKeyUp={(e) => {
+                        if (e.key === 'Enter') onsubmit();
+                    }}
+                />
+                <button onClick={onsubmit}>Submit</button>
             </div>
-            <button onClick={onsubmit}>Submit</button>
             <div>
                 {
                     tagLine !== '' ?
