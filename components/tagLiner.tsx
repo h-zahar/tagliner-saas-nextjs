@@ -7,10 +7,12 @@ const TagLiner: React.FC = () => {
     const inputRef = useRef<HTMLInputElement>(null);
     const ENDPOINT = 'https://api-saas.onrender.com/snippet';
     const [tagLine, setTagLine] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const onsubmit = () => {
         if (keyword === '') return;
         inputRef.current ? inputRef.current.hidden = true : null;
+        setIsLoading(true);
 
         fetch(`${ENDPOINT}?user_input=${keyword}`)
         .then(res => res.json())
@@ -18,10 +20,12 @@ const TagLiner: React.FC = () => {
             setTagLine(data?.content);
             setKeyword('');
             inputRef.current ? inputRef.current.hidden = false : null;
+            setIsLoading(false);
         })
         .catch(err => {
             console.log(err);
             inputRef.current ? inputRef.current.hidden = false : null;
+            setIsLoading(false);
         });
     }
     return (
@@ -41,9 +45,10 @@ const TagLiner: React.FC = () => {
                 />
                 <button onClick={onsubmit}>Submit</button>
             </div>
+            {isLoading ? <p>Loading...</p> : null}
             <div>
                 {
-                    tagLine !== '' ?
+                    tagLine !== '' && !isLoading ?
                     <p>{tagLine}</p>
                     : null
                 }
