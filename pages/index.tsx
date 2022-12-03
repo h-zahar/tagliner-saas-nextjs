@@ -1,6 +1,6 @@
 import Head from 'next/head'
 import Image from 'next/image'
-import TagLiner from '../components/tagliner'
+import TagLiner from '../components/tagLiner'
 import styles from '../styles/Home.module.css'
 
 export default function Home() {
