@@ -17,7 +17,7 @@ export default function Home() {
       </main>
 
       <footer className={styles.footer}>
-        Copyright &#169; 2021 TagLiner
+        Copyright &#169; {new Date().getFullYear()} TagLiner
       </footer>
     </div>
   )
